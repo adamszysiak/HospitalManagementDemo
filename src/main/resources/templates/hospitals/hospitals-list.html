@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospitals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <hr>
+    <a th:href="@{/hospitals/showFormForAddHospital}"
+       class="btn btn-primary btn-sm mb-3">
+        Add hospital
+    </a>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Town</th>
+            <th>Street number</th>
+            <th>PostalCode</th>
+            <th>Phone number1</th>
+            <th>Phone number2</th>
+            <th>Fax number1</th>
+            <th>Fax number2</th>
+            <th>Chief of medicine</th>
+            <th>Sales rep</th>
+            <th>GPS address</th>
+            <th>Street</th>
+            <th>Helicopter access</th>
+            <th>Teaching hospital</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tr th:each="tempHospital : ${hospitals}">
+            <td th:text="${tempHospital.name}"></td>
+            <td th:text="${tempHospital.country}"></td>
+            <td th:text="${tempHospital.town}"></td>
+            <td th:text="${tempHospital.streetNumber}"></td>
+            <td th:text="${tempHospital.postalCode}"></td>
+            <td th:text="${tempHospital.phoneNumber1}"></td>
+            <td th:text="${tempHospital.phoneNumber2}"></td>
+            <td th:text="${tempHospital.faxNumber1}"></td>
+            <td th:text="${tempHospital.faxNumber2}"></td>
+            <td th:text="${tempHospital.chiefOfMedicine}"></td>
+            <td th:text="${tempHospital.salesRep}"></td>
+            <td th:text="${tempHospital.gpsAddress}"></td>
+            <td th:text="${tempHospital.street}"></td>
+            <td th:text="${tempHospital.helicopterAccess}"></td>
+            <td th:text="${tempHospital.teachingHospital}"></td>
+
+            <td>
+                <!--add update button-->
+                <!--<a th:href="@{/hospitals/showFormForUpdate(hospitalId=${tempHospital.id})}"-->
+                   <!--class="btn btn-info btn-sm">-->
+                    <!--Update-->
+                <!--</a>-->
+
+                <!--add delete button-->
+                <!--<a th:href="@{/hospitals/delete(hospitalId=${hospitalId.id})}" class="btn btn-danger btn-sm"-->
+                   <!--onclick="if (!(confirm('Are u sure you want to delete this doctor?')))return false ">Delete</a>-->
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

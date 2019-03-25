@@ -114,7 +114,7 @@ public class Doctor {
         this.title = title;
         this.licenceNumber = licenceNumber;
         this.position = position;
-        this.department=department;
+        this.department = department;
         this.supervisor = supervisor;
         this.workPhone = workPhone;
         this.privatePhone = privatePhone;

@@ -36,7 +36,7 @@ public class DoctorServiceImpl implements  DoctorService {
             doctor = result.get();
         }
         else {
-            throw  new RuntimeException("Did not find doctor id - "+ id);
+            throw  new RuntimeException("Did not find doctors id - "+ id);
         }
         return doctor;
     }

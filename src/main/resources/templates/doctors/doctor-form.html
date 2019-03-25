@@ -7,35 +7,36 @@
     <!--Bootstrap css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Save Doctor</title>
+    <title>Doctor form</title>
 </head>
 <body>
 
 <div id="container">
-    <form action="#" th:action="@{/doctors/save}" th:object="${doctor}" method="post">
+    <form action="#" th:action="@{/doctors/save}"
+          th:object="${doctor}" method="post">
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}"/>
         <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{surname}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{title}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{licenceNumber}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{position}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{department}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{supervisor}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{workPhone}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{privatePhone}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{email}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{country}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{town}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{street}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{streetNumber}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{houseNumber}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{postalCode}" placeholder="Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{surname}" placeholder="Surname" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{title}" placeholder="Title" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{licenceNumber}" placeholder="Licence Number" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{position}" placeholder="Position" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{department}" placeholder="Department" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{supervisor}" placeholder="Supervisor" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{workPhone}" placeholder="Work phone" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{privatePhone}" placeholder="Private phone" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="email" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{country}" placeholder="Country" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{town}" placeholder="Town" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{street}" placeholder="Street" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{streetNumber}" placeholder="Street number" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{houseNumber}" placeholder="House number" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{postalCode}" placeholder="Postal code" class="form-control mb-4 col-4">
         <input type="text" th:field="*{availability}" placeholder="false" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{availableDate}" placeholder="12/02/19" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{status}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{partTime}" placeholder="Name" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{homeConsult}" placeholder="Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{availableDate}" placeholder="YYYY-MM-DD" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{status}" placeholder="Status" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{partTime}" placeholder="" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{homeConsult}" placeholder="" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>

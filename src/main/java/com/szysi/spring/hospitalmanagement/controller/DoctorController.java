@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,8 +25,8 @@ public class DoctorController {
         return "doctors/doctors-list";
     }
 
-    @GetMapping("/showFormForAdd")
-    public String showFormForAdd(Model model){
+    @GetMapping("/showFormForAddDoctor")
+    public String showFormForAddDoctor(Model model){
         Doctor doctor = new Doctor();
         model.addAttribute("doctor",doctor);
         return "doctors/doctor-form" ;

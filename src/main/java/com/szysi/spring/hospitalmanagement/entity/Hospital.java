@@ -1,5 +1,7 @@
 package com.szysi.spring.hospitalmanagement.entity;
 
+import org.springframework.stereotype.Controller;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,9 @@ public class Hospital {
 
     @Column(name = "country")
     private String country;
+
+    @Column(name = "town")
+    private String town;
 
     @Column(name = "street")
     private String street;
@@ -55,13 +60,14 @@ public class Hospital {
     public Hospital() {
     }
 
-    public Hospital(int id, String name, String country, String street, String streetNumber,
-                    String postalCode, String phoneNumber1, String phoneNumber2,
-                    String faxNumber1, String faxNumber2, String chiefOfMedicine, String salesRep,
-                    String gpsAddress, boolean helicopterAccess, boolean teachingHospital) {
-        this.id = id;
+
+    public Hospital(int id, String name, String country, String town, String street, String streetNumber, String postalCode,
+                    String phoneNumber1, String phoneNumber2, String faxNumber1, String faxNumber2, String chiefOfMedicine,
+                    String salesRep, String gpsAddress, boolean helicopterAccess, boolean teachingHospital) {
+        this.id=id;
         this.name = name;
         this.country = country;
+        this.town = town;
         this.street = street;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
@@ -75,6 +81,27 @@ public class Hospital {
         this.helicopterAccess = helicopterAccess;
         this.teachingHospital = teachingHospital;
     }
+
+    public Hospital(String name, String country, String town, String street, String streetNumber, String postalCode,
+                    String phoneNumber1, String phoneNumber2, String faxNumber1, String faxNumber2, String chiefOfMedicine,
+                    String salesRep, String gpsAddress, boolean helicopterAccess, boolean teachingHospital) {
+        this.name = name;
+        this.country = country;
+        this.town = town;
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.faxNumber1 = faxNumber1;
+        this.faxNumber2 = faxNumber2;
+        this.chiefOfMedicine = chiefOfMedicine;
+        this.salesRep = salesRep;
+        this.gpsAddress = gpsAddress;
+        this.helicopterAccess = helicopterAccess;
+        this.teachingHospital = teachingHospital;
+    }
+
 
     public int getId() {
         return id;
@@ -98,6 +125,14 @@ public class Hospital {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
     }
 
     public String getStreet() {
@@ -202,6 +237,7 @@ public class Hospital {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", country='" + country + '\'' +
+                ", town='" + town + '\'' +
                 ", street='" + street + '\'' +
                 ", streetNumber='" + streetNumber + '\'' +
                 ", postalCode='" + postalCode + '\'' +

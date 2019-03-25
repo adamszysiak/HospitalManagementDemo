@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Add hospital</title>
+</head>
+<body>
+<div id="container">
+    <form action="#" th:action="@{/hospitals/save}"
+          th:object="${hospital}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{country}" placeholder="Country" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{town}" placeholder="Town" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{street}" placeholder="Street" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{streetNumber}" placeholder="Street number" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{postalCode}" placeholder="Postal code" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{phoneNumber1}" placeholder="Phone number 1" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{phoneNumber2}" placeholder="Phone number 2" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{faxNumber1}" placeholder="Fax number 1" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{faxNumber2}" placeholder="Fax number 2" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{chiefOfMedicine}" placeholder="Chief of medicine" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{salesRep}" placeholder="Sales rep" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{gpsAddress}" placeholder="GPS Address" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{helicopterAccess}" placeholder="" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{teachingHospital}" placeholder="Teaching hospitals" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+</div>
+</body>
+</html>
