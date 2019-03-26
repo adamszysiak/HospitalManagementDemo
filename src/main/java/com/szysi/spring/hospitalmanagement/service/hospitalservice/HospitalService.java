@@ -10,4 +10,8 @@ public interface HospitalService {
     List<Hospital> findAll();
 
     void saveHospital(Hospital hospital);
+
+    Hospital findById(int id);
+
+    void deleteHospitalById(int id);
 }

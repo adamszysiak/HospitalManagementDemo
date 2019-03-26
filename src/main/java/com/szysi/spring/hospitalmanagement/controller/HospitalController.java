@@ -4,10 +4,7 @@ import com.szysi.spring.hospitalmanagement.entity.Hospital;
 import com.szysi.spring.hospitalmanagement.service.hospitalservice.HospitalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,4 +40,18 @@ public class HospitalController {
 
         return "redirect:/hospitals/list";
     }
+
+    @GetMapping("/showFormForUpdateHospital")
+    public String showFormForUpdateHospital(@RequestParam("hospitalId") int id,Model model){
+        Hospital hospital = hospitalService.findById(id);
+        model.addAttribute("hospital" ,hospital);
+        return "hospitals/hospital-form";
+    }
+
+    @GetMapping("/delete")
+    public String deleteHospital(@RequestParam ("hospitalId") int id){
+        hospitalService.deleteHospitalById(id);
+        return "redirect:/hospitals/list";
+    }
+
 }
