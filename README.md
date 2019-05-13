@@ -32,6 +32,7 @@ Project is: _in development phase_
 #### Development plans:
 
 * Add setup to README.md
+* Add labels to forms
 * Add functionality to hire doctor to hospital
 
 # Images:
