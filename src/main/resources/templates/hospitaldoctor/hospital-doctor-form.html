@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital doctor form</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<div id="container">
+    <form id="hospitalDoctorFormId" action="#" th:action="@{/hospitaldoctor/save}"
+          th:object="${hospitaldoctor}" method="post">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{hospitalId}">
+        <input type="hidden" th:field="*{doctorId}">
+        <!--TODO add id doctor-->
+
+        <select >
+            <!--<option value="---" selected >---------------</option>-->
+            <option th:each="tempHospital : ${hospital}" th:value="${tempHospital.id}" th:text="${tempHospital.name}"
+                    th:field="*{hospitalId}" selected="selected">
+                <!--todo get doctor ids somehow -->
+                <!--<script th:each="tempDoctor : ${doctor} ">-->
+                <!--var str = $(tempDoctor.name).text().show();-->
+                <!--console.log(str);-->
+
+                <!--</script>-->
+
+                <!--th:name="hospital" ><option th:value="${hospital.id}"-->
+
+            </option>
+        </select>
+        <br><br>
+
+        <select >
+            <!--<option value="---" selected >---------------</option>-->
+            <option th:each="tempDoctor : ${doctor}" th:value="${tempDoctor.id}" th:text="${tempDoctor.name}"
+                    th:field="*{doctorId}" selected="selected">
+                 <!--todo get doctor ids somehow -->
+                <!--<script th:each="tempDoctor : ${doctor} ">-->
+                    <!--var str = $(tempDoctor.name).text().show();-->
+                    <!--console.log(str);-->
+
+                <!--</script>-->
+
+                <!--th:name="hospital" ><option th:value="${hospital.id}"-->
+
+            </option>
+        </select>
+
+
+
+        <!--</form>-->
+
+        <!--<input type="text" th:field="*{email}" placeholder="email" class="form-control mb-4 col-4">-->
+        <br><br>
+        <input type="text" th:field="*{dateStarted}" placeholder="YYYY-MM-DD" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{department}" placeholder="department" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{position}" placeholder="position" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{supervisor}" placeholder="supervisor" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{status}" placeholder="status" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{partTime}" placeholder="partTime" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{homeConsult}" placeholder="homeConsult" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{lastModifiedBy}" placeholder="lastModifiedBy" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+</div>
+
+</body>
+</html>

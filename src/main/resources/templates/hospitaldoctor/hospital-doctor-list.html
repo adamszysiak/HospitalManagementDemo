@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Hospital Doctor list</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <hr>
+
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>Hospital id</th>
+            <th>Doctor id</th>
+            <th>Date started</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Supervisor</th>
+            <th>Status</th>
+            <th>Part time</th>
+            <th>Home consult</th>
+            <th>Last modified by</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tr th:each="tempHospitalDoctor : ${hospitaldoctor}">
+            <!--<td th:text="${tempHospital.name}"></td>-->
+            <!--<td th:text="${tempHospital.country}"></td>-->
+            <!--<td th:text="${tempHospital.town}"></td>-->
+            <!--<td th:text="${tempHospital.streetNumber}"></td>-->
+            <!--<td th:text="${tempHospital.postalCode}"></td>-->
+            <!--<td th:text="${tempHospital.phoneNumber1}"></td>-->
+            <!--<td th:text="${tempHospital.phoneNumber2}"></td>-->
+            <!--<td th:text="${tempHospital.faxNumber1}"></td>-->
+            <!--<td th:text="${tempHospital.faxNumber2}"></td>-->
+            <!--<td th:text="${tempHospital.chiefOfMedicine}"></td>-->
+            <!--<td th:text="${tempHospital.salesRep}"></td>-->
+            <!--<td th:text="${tempHospital.gpsAddress}"></td>-->
+            <!--<td th:text="${tempHospital.street}"></td>-->
+            <!--<td th:text="${tempHospital.helicopterAccess}"></td>-->
+            <!--<td th:text="${tempHospital.teachingHospital}"></td>-->
+           <td>
+            <!--<a th:href="@{/hospitaldoctor/showFormForAdd(doctorId=${tempDoctor.id})}"-->
+               <a th:href="@{/hospitaldoctor/showFormForAdd}"
+               class="btn btn-primary btn-sm mb-3">
+                Hire Doctor
+            </a>
+           </td>
+
+        </tr>
+    </table>
+
+    <p>
+        <a th:href="@{/hospitaldoctor/showFormForAdd}"
+           class="btn btn-primary btn-sm mb-3">
+            Hire Doctor
+        </a>
+    </p>
+
+    <p>
+        <a class="simple-link" th:href="@{/}">Home</a>
+    </p>
+
+</div>
+</body>
+</html>

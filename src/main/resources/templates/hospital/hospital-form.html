@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="container">
-    <form action="#" th:action="@{/hospitals/save}"
+    <form action="#" th:action="@{/hospital/save}"
           th:object="${hospital}" method="post">
         <input type="hidden" th:field="*{id}"/>
         <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
@@ -28,7 +28,7 @@
         <input type="text" th:field="*{salesRep}" placeholder="Sales rep" class="form-control mb-4 col-4">
         <input type="text" th:field="*{gpsAddress}" placeholder="GPS Address" class="form-control mb-4 col-4">
         <input type="text" th:field="*{helicopterAccess}" placeholder="" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{teachingHospital}" placeholder="Teaching hospitals" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{teachingHospital}" placeholder="Teaching hospital" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2">Save</button>
     </form>

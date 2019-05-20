@@ -1,6 +1,8 @@
 package com.szysi.spring.hospitalmanagement.service.doctorservice;
 
 import com.szysi.spring.hospitalmanagement.dao.DoctorRepository;
+import com.szysi.spring.hospitalmanagement.dao.HospitalDoctorRepository;
+import com.szysi.spring.hospitalmanagement.dao.HospitalRepository;
 import com.szysi.spring.hospitalmanagement.entity.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +12,23 @@ import java.util.Optional;
 
 @Service
 public class DoctorServiceImpl implements  DoctorService {
+    private HospitalDoctorRepository hospitalDoctorRepository;
+    private HospitalRepository hospitalRepository;
     private DoctorRepository doctorRepository;
 
     @Autowired
-    public DoctorServiceImpl(DoctorRepository doctorRepository) {
+    public DoctorServiceImpl(HospitalDoctorRepository hospitalDoctorRepository, HospitalRepository hospitalRepository, DoctorRepository doctorRepository) {
+        this.hospitalDoctorRepository = hospitalDoctorRepository;
+        this.hospitalRepository = hospitalRepository;
         this.doctorRepository = doctorRepository;
     }
+
+    //    private DoctorRepository doctorRepository;
+//
+//    @Autowired
+//    public DoctorServiceImpl(DoctorRepository doctorRepository) {
+//        this.doctorRepository = doctorRepository;
+//    }
 
     @Override
     public void saveDoctor(Doctor doctor) {
@@ -36,7 +49,7 @@ public class DoctorServiceImpl implements  DoctorService {
             doctor = result.get();
         }
         else {
-            throw  new RuntimeException("Did not find doctors id - "+ id);
+            throw  new RuntimeException("Did not find doctor id - "+ id);
         }
         return doctor;
     }

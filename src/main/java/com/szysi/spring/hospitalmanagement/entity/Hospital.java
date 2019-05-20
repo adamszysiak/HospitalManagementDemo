@@ -1,11 +1,10 @@
 package com.szysi.spring.hospitalmanagement.entity;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "hospitals")
+@Table(name = "hospital")
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,9 +56,37 @@ public class Hospital {
     @Column(name = "teaching_hospital")
     private boolean teachingHospital;
 
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(
+            name = "hospital_doctor",
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "hospital_id")
+    )
+    private List<Doctor> doctors;
+
     public Hospital() {
     }
 
+    public Hospital(String name, String country, String town, String street, String streetNumber, String postalCode, String phoneNumber1,
+                    String phoneNumber2, String faxNumber1, String faxNumber2, String chiefOfMedicine, String salesRep, String gpsAddress,
+                    boolean helicopterAccess, boolean teachingHospital, List<Doctor> doctors) {
+        this.name = name;
+        this.country = country;
+        this.town = town;
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.postalCode = postalCode;
+        this.phoneNumber1 = phoneNumber1;
+        this.phoneNumber2 = phoneNumber2;
+        this.faxNumber1 = faxNumber1;
+        this.faxNumber2 = faxNumber2;
+        this.chiefOfMedicine = chiefOfMedicine;
+        this.salesRep = salesRep;
+        this.gpsAddress = gpsAddress;
+        this.helicopterAccess = helicopterAccess;
+        this.teachingHospital = teachingHospital;
+        this.doctors = doctors;
+    }
 
     public Hospital(int id, String name, String country, String town, String street, String streetNumber, String postalCode,
                     String phoneNumber1, String phoneNumber2, String faxNumber1, String faxNumber2, String chiefOfMedicine,
@@ -231,6 +258,14 @@ public class Hospital {
         this.teachingHospital = teachingHospital;
     }
 
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
     @Override
     public String toString() {
         return "Hospital{" +
@@ -250,6 +285,7 @@ public class Hospital {
                 ", gpsAddress='" + gpsAddress + '\'' +
                 ", helicopterAccess=" + helicopterAccess +
                 ", teachingHospital=" + teachingHospital +
+                ", doctors=" + doctors +
                 '}';
     }
 }

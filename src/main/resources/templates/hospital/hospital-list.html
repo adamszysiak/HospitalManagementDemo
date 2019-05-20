@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hospitals</title>
+    <title>Hospital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -10,10 +10,11 @@
 <body>
 <div class="container-fluid">
     <hr>
-    <a th:href="@{/hospitals/showFormForAddHospital}"
+    <a th:href="@{/hospital/showFormForAdd}"
        class="btn btn-primary btn-sm mb-3">
         Add hospital
     </a>
+    <a class="simple-link" th:href="@{/}">Home</a>
 
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">
@@ -36,7 +37,7 @@
             <th>Action</th>
         </tr>
         </thead>
-        <tr th:each="tempHospital : ${hospitals}">
+        <tr th:each="tempHospital : ${hospital}">
             <td th:text="${tempHospital.name}"></td>
             <td th:text="${tempHospital.country}"></td>
             <td th:text="${tempHospital.town}"></td>
@@ -55,19 +56,30 @@
 
             <td>
                 <!--add update button-->
-                <a th:href="@{/hospitals/showFormForUpdateHospital(hospitalId=${tempHospital.id})}"
+                <a th:href="@{/hospital/showFormForUpdateHospital(hospitalId=${tempHospital.id})}"
                    class="btn btn-info btn-sm">
                     Update
                 </a>
 
+                <a th:href="@{/hospitaldoctor/showFormForAdd(hospitalId=${tempHospital.id})}"
+                   class="btn btn-primary btn-sm mb-3">
+                    Hire Doctor
+                </a>
+
+
                 <!--add delete button-->
-                <a th:href="@{/hospitals/delete(hospitalId=${tempHospital.id})}" class="btn btn-danger btn-sm"
+                <a th:href="@{/hospital/delete(hospitalId=${tempHospital.id})}" class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Are u sure you want to delete this doctor?')))return false ">Delete</a>
             </td>
         </tr>
 
     </table>
 
+    <div style=""></div>
+
+    <p>
+        <a class="simple-link" th:href="@{/}">Home</a>
+    </p>
 </div>
 
 </body>

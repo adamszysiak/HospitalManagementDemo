@@ -1,6 +1,8 @@
 package com.szysi.spring.hospitalmanagement.controller;
 
 import com.szysi.spring.hospitalmanagement.entity.Hospital;
+import com.szysi.spring.hospitalmanagement.service.doctorservice.DoctorService;
+import com.szysi.spring.hospitalmanagement.service.hospitaldoctorservice.HospitalDoctorService;
 import com.szysi.spring.hospitalmanagement.service.hospitalservice.HospitalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,28 +11,39 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/hospitals")
+@RequestMapping("/hospital")
 public class HospitalController {
 
+    private HospitalDoctorService hospitalDoctorService;
     private HospitalService hospitalService;
+    private DoctorService doctorService;
 
-    public HospitalController(HospitalService hospitalService) {
+    public HospitalController(HospitalDoctorService hospitalDoctorService, HospitalService hospitalService, DoctorService doctorService) {
+        this.hospitalDoctorService = hospitalDoctorService;
         this.hospitalService = hospitalService;
+        this.doctorService = doctorService;
     }
+
+    //
+//    private HospitalService hospitalService;
+//
+//    public HospitalController(HospitalService hospitalService) {
+//        this.hospitalService = hospitalService;
+//    }
 
     @GetMapping("/list")
     public String getHospitals(Model model){
         List<Hospital> hospitalList = hospitalService.findAll();
-        model.addAttribute("hospitals",hospitalList);
-        return  "hospitals/hospitals-list";
+        model.addAttribute("hospital",hospitalList);
+        return "hospital/hospital-list";
     }
 
-    @GetMapping("/showFormForAddHospital")
+    @GetMapping("/showFormForAdd")
     public String showFormForAddHospital(Model model){
         Hospital hospital = new Hospital();
 
         model.addAttribute("hospital",hospital);
-        return "hospitals/hospital-form";
+        return "hospital/hospital-form";
     }
 
     @PostMapping("/save")
@@ -38,20 +51,20 @@ public class HospitalController {
 
         hospitalService.saveHospital(hospital);
 
-        return "redirect:/hospitals/list";
+        return "redirect:/hospital/list";
     }
 
     @GetMapping("/showFormForUpdateHospital")
     public String showFormForUpdateHospital(@RequestParam("hospitalId") int id,Model model){
         Hospital hospital = hospitalService.findById(id);
         model.addAttribute("hospital" ,hospital);
-        return "hospitals/hospital-form";
+        return "hospital/hospital-form";
     }
 
     @GetMapping("/delete")
     public String deleteHospital(@RequestParam ("hospitalId") int id){
         hospitalService.deleteHospitalById(id);
-        return "redirect:/hospitals/list";
+        return "redirect:/hospital/list";
     }
 
 }
