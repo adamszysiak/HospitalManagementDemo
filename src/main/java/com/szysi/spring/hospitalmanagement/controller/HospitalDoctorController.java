@@ -1,6 +1,5 @@
 package com.szysi.spring.hospitalmanagement.controller;
 
-import com.szysi.spring.hospitalmanagement.dao.HospitalDoctorRepository;
 import com.szysi.spring.hospitalmanagement.entity.Doctor;
 import com.szysi.spring.hospitalmanagement.entity.Hospital;
 import com.szysi.spring.hospitalmanagement.entity.HospitalDoctor;
@@ -11,10 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("/hospitaldoctor")
+@RequestMapping("/hospitalDoctor")
 public class HospitalDoctorController {
 
     private HospitalDoctorService hospitalDoctorService;
@@ -41,42 +45,53 @@ public class HospitalDoctorController {
 //    }
 
     @GetMapping("/list")
-    public String getHospitalDoctor(Model model){
+    public String getHospitalDoctor(Model model) {
         List<HospitalDoctor> hospitalDoctorList = hospitalDoctorService.findAll();
-        model.addAttribute("hospitaldoctor", hospitalDoctorList);
+        model.addAttribute("hospitalDoctor", hospitalDoctorList);
 
         return "hospitaldoctor/hospital-doctor-list";
     }
 
+
     @GetMapping("/showFormForAdd")
-    public String showFormForAddHospitalDoctor(Model model){
+    public String showFormForAddHospitalDoctor(
+            @ModelAttribute("tempDoctor") Doctor doctor,
+            @ModelAttribute("tempHospital") Hospital hospital, Model model) {
+
         HospitalDoctor hospitalDoctor = new HospitalDoctor();
-        model.addAttribute("hospitaldoctor", hospitalDoctor);
-//        Doctor doctor = doctorService.findById(id);
-//
-//        Hospital hospital = hospitalService.findById(id);
-//        model.addAttribute("hospital", hospital);
         List<Doctor> doctorList = doctorService.findAll();
         List<Hospital> hospitalList = hospitalService.findAll();
-//        for(Doctor tempDoctor:doctorList)
-//        {
-//            nameDoctor= tempDoctor.getName();
-//        }
-//        model.addAttribute("subjects", subjects);
-        model.addAttribute("doctor",doctorList);
-        model.addAttribute("hospital",hospitalList);
-//        hospitalDoctor.setDoctorId(doctor.getId());
+        model.addAttribute("doctorList", doctorList);
+        model.addAttribute("hospitalList", hospitalList);
+
+        model.addAttribute("hospitalDoctor", hospitalDoctor);
+
+        hospitalDoctor.setHospital(hospital);
+        hospitalDoctor.setDoctor(doctor);
+
         return "hospitaldoctor/hospital-doctor-form";
     }
 
     @PostMapping("/save")
-    public String saveHospitalDoctor(@ModelAttribute ("hospitaldoctor") HospitalDoctor hospitalDoctor){
-//        try {
-            hospitalDoctorService.saveHospitalDoctor(hospitalDoctor);
-//        }
-//        catch (Exception e){
-//            System.err.println(e.toString());
-//        }
-        return "redirect:/hospitaldoctor/hospital-doctor-list";
+    public String saveHospitalDoctor(@ModelAttribute("hospitalDoctor") HospitalDoctor hospitalDoctor) {
+        hospitalDoctorService.saveHospitalDoctor(hospitalDoctor);
+        return "redirect:/hospitalDoctor/list";
+    }
+
+    @GetMapping("/showFormForUpdateHospitalDoctor")
+    public String showFormForUpdateHospitalDoctor(@RequestParam("hospitalDoctorId") int id, Model model) {
+        HospitalDoctor hospitalDoctor = hospitalDoctorService.findById(id);
+        List<Doctor> doctorList = doctorService.findAll();
+        List<Hospital> hospitalList = hospitalService.findAll();
+        model.addAttribute("doctorList", doctorList);
+        model.addAttribute("hospitalList", hospitalList);
+        model.addAttribute("hospitalDoctor", hospitalDoctor);
+        return "hospitaldoctor/hospital-doctor-form";
+    }
+
+    @GetMapping("/delete")
+    public String deleteHospitalDoctor(@RequestParam("hospitalDoctorId") int id) {
+        hospitalDoctorService.deleteHospitalDoctorById(id);
+        return "redirect:/hospitalDoctor/list";
     }
 }

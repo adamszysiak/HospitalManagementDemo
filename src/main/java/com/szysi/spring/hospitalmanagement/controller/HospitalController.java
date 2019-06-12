@@ -57,7 +57,7 @@ public class HospitalController {
     @GetMapping("/showFormForUpdateHospital")
     public String showFormForUpdateHospital(@RequestParam("hospitalId") int id,Model model){
         Hospital hospital = hospitalService.findById(id);
-        model.addAttribute("hospital" ,hospital);
+        model.addAttribute( "hospital" ,hospital);
         return "hospital/hospital-form";
     }
 

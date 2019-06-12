@@ -11,7 +11,12 @@
 <div class="container-fluid">
     <hr>
 
-
+    <p>
+        <a th:href="@{/hospitalDoctor/showFormForAdd}"
+           class="btn btn-primary btn-sm mb-3">
+            Hire Doctor
+        </a>
+    </p>
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">
         <tr>
@@ -28,39 +33,33 @@
             <th>Action</th>
         </tr>
         </thead>
-        <tr th:each="tempHospitalDoctor : ${hospitaldoctor}">
-            <!--<td th:text="${tempHospital.name}"></td>-->
-            <!--<td th:text="${tempHospital.country}"></td>-->
-            <!--<td th:text="${tempHospital.town}"></td>-->
-            <!--<td th:text="${tempHospital.streetNumber}"></td>-->
-            <!--<td th:text="${tempHospital.postalCode}"></td>-->
-            <!--<td th:text="${tempHospital.phoneNumber1}"></td>-->
-            <!--<td th:text="${tempHospital.phoneNumber2}"></td>-->
-            <!--<td th:text="${tempHospital.faxNumber1}"></td>-->
-            <!--<td th:text="${tempHospital.faxNumber2}"></td>-->
-            <!--<td th:text="${tempHospital.chiefOfMedicine}"></td>-->
-            <!--<td th:text="${tempHospital.salesRep}"></td>-->
-            <!--<td th:text="${tempHospital.gpsAddress}"></td>-->
-            <!--<td th:text="${tempHospital.street}"></td>-->
-            <!--<td th:text="${tempHospital.helicopterAccess}"></td>-->
-            <!--<td th:text="${tempHospital.teachingHospital}"></td>-->
-           <td>
-            <!--<a th:href="@{/hospitaldoctor/showFormForAdd(doctorId=${tempDoctor.id})}"-->
-               <a th:href="@{/hospitaldoctor/showFormForAdd}"
-               class="btn btn-primary btn-sm mb-3">
-                Hire Doctor
-            </a>
-           </td>
+        <tr th:each="tempHospitalDoctor : ${hospitalDoctor}">
+            <td th:text="${tempHospitalDoctor.hospital.getId()}"></td>
+            <td th:text="${tempHospitalDoctor.doctor.getId()}"></td>
+            <td th:text="${tempHospitalDoctor.dateStarted}"></td>
+            <td th:text="${tempHospitalDoctor.department}"></td>
+            <td th:text="${tempHospitalDoctor.position}"></td>
+            <td th:text="${tempHospitalDoctor.supervisor}"></td>
+            <td th:text="${tempHospitalDoctor.status}"></td>
+            <td th:text="${tempHospitalDoctor.partTime}"></td>
+            <td th:text="${tempHospitalDoctor.homeConsult}"></td>
+            <td th:text="${tempHospitalDoctor.lastModifiedBy}"></td>
+            <td>
+                <!--add update button-->
+                <a th:href="@{/hospitalDoctor/showFormForUpdateHospitalDoctor(hospitalDoctorId=${tempHospitalDoctor.id})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+
+                <!--add delete button-->
+                <a th:href="@{/hospitalDoctor/delete(hospitalDoctorId=${tempHospitalDoctor.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are u sure you want to delete this record?')))return false ">Delete</a>
+            </td>
 
         </tr>
     </table>
 
-    <p>
-        <a th:href="@{/hospitaldoctor/showFormForAdd}"
-           class="btn btn-primary btn-sm mb-3">
-            Hire Doctor
-        </a>
-    </p>
+
 
     <p>
         <a class="simple-link" th:href="@{/}">Home</a>

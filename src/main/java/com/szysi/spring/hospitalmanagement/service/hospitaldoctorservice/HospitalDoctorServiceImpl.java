@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HospitalDoctorServiceImpl implements HospitalDoctorService {
@@ -37,5 +38,23 @@ public class HospitalDoctorServiceImpl implements HospitalDoctorService {
     @Override
     public void saveHospitalDoctor(HospitalDoctor hospitalDoctor) {
         hospitalDoctorRepository.save(hospitalDoctor);
+    }
+
+    @Override
+    public HospitalDoctor findById(int id) {
+        Optional<HospitalDoctor> result =  hospitalDoctorRepository.findById(id);
+        HospitalDoctor hospitalDoctor;
+        if(result.isPresent()){
+            hospitalDoctor = result.get();
+        }
+        else{
+            throw  new RuntimeException("Did not found hospitalDoctor id - "+ id);
+        }
+        return hospitalDoctor;
+    }
+
+    @Override
+    public void deleteHospitalDoctorById(int id) {
+        hospitalDoctorRepository.deleteById(id);
     }
 }

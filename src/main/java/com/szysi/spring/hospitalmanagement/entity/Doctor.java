@@ -75,7 +75,7 @@ public class Doctor {
 
     @Column(name = "home_consult")
     private boolean homeConsult;
-
+//
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinTable(
             name = "hospital_doctor",
@@ -114,61 +114,61 @@ public class Doctor {
         this.homeConsult = homeConsult;
         this.hospitals = hospitals;
     }
-
-    public Doctor(String name, String surname, String title, int licenceNumber, String position, String department,
-                  String supervisor, String workPhone, String privatePhone, String email, String country, String town,
-                  String street, String streetNumber, String houseNumber, String postalCode, boolean availability,
-                  Date availableDate, String status, boolean partTime, boolean homeConsult) {
-        this.name = name;
-        this.surname = surname;
-        this.title = title;
-        this.licenceNumber = licenceNumber;
-        this.position = position;
-        this.department = department;
-        this.supervisor = supervisor;
-        this.workPhone = workPhone;
-        this.privatePhone = privatePhone;
-        this.email = email;
-        this.country = country;
-        this.town = town;
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.houseNumber = houseNumber;
-        this.postalCode = postalCode;
-        this.availability = availability;
-        this.availableDate = availableDate;
-        this.status = status;
-        this.partTime = partTime;
-        this.homeConsult = homeConsult;
-    }
-
-    public Doctor(int id, String name, String surname, String title, int licenceNumber, String position, String department,
-                  String supervisor, String workPhone, String privatePhone, String email, String country, String town,
-                  String street, String streetNumber, String houseNumber, String postalCode, boolean availability,
-                  Date availableDate, String status, boolean partTime, boolean homeConsult) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.title = title;
-        this.licenceNumber = licenceNumber;
-        this.position = position;
-        this.department = department;
-        this.supervisor = supervisor;
-        this.workPhone = workPhone;
-        this.privatePhone = privatePhone;
-        this.email = email;
-        this.country = country;
-        this.town = town;
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.houseNumber = houseNumber;
-        this.postalCode = postalCode;
-        this.availability = availability;
-        this.availableDate = availableDate;
-        this.status = status;
-        this.partTime = partTime;
-        this.homeConsult = homeConsult;
-    }
+//
+//    public Doctor(String name, String surname, String title, int licenceNumber, String position, String department,
+//                  String supervisor, String workPhone, String privatePhone, String email, String country, String town,
+//                  String street, String streetNumber, String houseNumber, String postalCode, boolean availability,
+//                  Date availableDate, String status, boolean partTime, boolean homeConsult) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.title = title;
+//        this.licenceNumber = licenceNumber;
+//        this.position = position;
+//        this.department = department;
+//        this.supervisor = supervisor;
+//        this.workPhone = workPhone;
+//        this.privatePhone = privatePhone;
+//        this.email = email;
+//        this.country = country;
+//        this.town = town;
+//        this.street = street;
+//        this.streetNumber = streetNumber;
+//        this.houseNumber = houseNumber;
+//        this.postalCode = postalCode;
+//        this.availability = availability;
+//        this.availableDate = availableDate;
+//        this.status = status;
+//        this.partTime = partTime;
+//        this.homeConsult = homeConsult;
+//    }
+//
+//    public Doctor(int id, String name, String surname, String title, int licenceNumber, String position, String department,
+//                  String supervisor, String workPhone, String privatePhone, String email, String country, String town,
+//                  String street, String streetNumber, String houseNumber, String postalCode, boolean availability,
+//                  Date availableDate, String status, boolean partTime, boolean homeConsult) {
+//        this.id = id;
+//        this.name = name;
+//        this.surname = surname;
+//        this.title = title;
+//        this.licenceNumber = licenceNumber;
+//        this.position = position;
+//        this.department = department;
+//        this.supervisor = supervisor;
+//        this.workPhone = workPhone;
+//        this.privatePhone = privatePhone;
+//        this.email = email;
+//        this.country = country;
+//        this.town = town;
+//        this.street = street;
+//        this.streetNumber = streetNumber;
+//        this.houseNumber = houseNumber;
+//        this.postalCode = postalCode;
+//        this.availability = availability;
+//        this.availableDate = availableDate;
+//        this.status = status;
+//        this.partTime = partTime;
+//        this.homeConsult = homeConsult;
+//    }
 
     public int getId() {
         return id;
@@ -344,25 +344,6 @@ public class Doctor {
 
     public void setHomeConsult(boolean homeConsult) {
         this.homeConsult = homeConsult;
-    }
-
-    public List<Hospital> getHospitals() {
-        return hospitals;
-    }
-
-    public void setHospitals(List<Hospital> hospitals) {
-        this.hospitals = hospitals;
-    }
-
-    // add a convenience method
-
-    public void addHospital(Hospital hospital) {
-
-        if (hospitals == null) {
-            hospitals = new ArrayList<>();
-        }
-
-        hospitals.add(hospital);
     }
 
     @Override

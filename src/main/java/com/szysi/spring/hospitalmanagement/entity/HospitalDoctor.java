@@ -12,17 +12,17 @@ public class HospitalDoctor {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "hospital_id")
-    private int hospitalId;
-//    @ManyToOne
-//    @JoinColumn(name = "hospital_id")
-//    private Hospital hospital;
+//    @Column(name = "hospital_id")
+//    private int hospitalId;
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 
-    @Column(name = "doctor_id")
-    private int doctorId;
-//    @ManyToOne
-//    @JoinColumn(name = "doctor_id")
-//    private Doctor doctor;
+//    @Column(name = "doctor_id")
+//    private int doctorId;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
     @Column(name = "date_started")
     private Date dateStarted;
@@ -52,10 +52,10 @@ public class HospitalDoctor {
     public HospitalDoctor() {
     }
 
-    public HospitalDoctor(int hospitalId, int doctorId, Date dateStarted, String department, String position, String supervisor,
-                          String status, boolean partTime, boolean homeConsult, String lastModifiedBy) {
-        this.hospitalId = hospitalId;
-        this.doctorId = doctorId;
+    public HospitalDoctor(Hospital hospital, Doctor doctor, Date dateStarted, String department, String position,
+                          String supervisor, String status, boolean partTime, boolean homeConsult, String lastModifiedBy) {
+        this.hospital = hospital;
+        this.doctor = doctor;
         this.dateStarted = dateStarted;
         this.department = department;
         this.position = position;
@@ -74,20 +74,20 @@ public class HospitalDoctor {
         this.id = id;
     }
 
-    public int getHospitalId() {
-        return hospitalId;
+    public Hospital getHospital() {
+        return hospital;
     }
 
-    public void setHospitalId(int hospitalId) {
-        this.hospitalId = hospitalId;
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
     }
 
-    public int getDoctorId() {
-        return doctorId;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorId(int doctorId) {
-        this.doctorId = doctorId;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Date getDateStarted() {
@@ -158,8 +158,8 @@ public class HospitalDoctor {
     public String toString() {
         return "HospitalDoctor{" +
                 "id=" + id +
-                ", hospitalId=" + hospitalId +
-                ", doctorId=" + doctorId +
+                ", hospital=" + hospital +
+                ", doctor=" + doctor +
                 ", dateStarted=" + dateStarted +
                 ", department='" + department + '\'' +
                 ", position='" + position + '\'' +

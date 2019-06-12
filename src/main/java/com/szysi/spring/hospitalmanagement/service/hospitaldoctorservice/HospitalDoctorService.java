@@ -12,4 +12,8 @@ public interface HospitalDoctorService {
     List<HospitalDoctor> findAll();
 
     void saveHospitalDoctor(HospitalDoctor hospitalDoctor);
+
+    HospitalDoctor findById(int id);
+
+    void deleteHospitalDoctorById(int id);
 }
